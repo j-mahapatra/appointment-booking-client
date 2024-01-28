@@ -1,10 +1,12 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { AuthContext } from '../providers/AuthProvider';
 
 export default function Login() {
   const navigate = useNavigate();
+  const { setUser } = useContext(AuthContext);
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
@@ -15,8 +17,9 @@ export default function Login() {
         email,
         password,
       })
-      .then(() => {
+      .then((res) => {
         toast.success('Login successful.');
+        setUser(res.data);
         navigate('/');
       })
       .catch(() => {
