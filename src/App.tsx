@@ -1,8 +1,11 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import axios from 'axios';
 
 import Signin from './pages/Signin';
 import Login from './pages/Login';
 import ToastProvider from './providers/ToastProvider';
+
+axios.defaults.withCredentials = true;
 
 export default function App() {
   return (

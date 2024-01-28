@@ -9,4 +9,8 @@
     font-family: 'Poppins', sans-serif;
     scroll-behavior: smooth;
   }
+
+  .blackGradient {
+    @apply bg-gradient-to-br from-slate-800 to-slate-900;
+  }
 }
