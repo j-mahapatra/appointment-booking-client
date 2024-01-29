@@ -1,3 +1,12 @@
+export const days = [
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+];
+
 export const slots = [
   '05:30',
   '05:45',
