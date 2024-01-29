@@ -4,13 +4,6 @@ import axios from 'axios';
 import { slots } from '../lib/constants';
 import toast from 'react-hot-toast';
 
-type SlotType = {
-  _id: string;
-  slot: string;
-  day: string;
-  isBooked: boolean;
-};
-
 function calcPreviousSlot(slot: string): string {
   const hours = parseInt(slot.substring(0, 2));
   const minutes = parseInt(slot.substring(3));
