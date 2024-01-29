@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+
+import { days, sectionsOfDay } from '../../lib/constants';
 import SlotView from '../../components/SlotView';
-import { days } from '../../lib/constants';
 
 export default function PatientView() {
   const [slots, setSlots] = useState<SlotType[]>();
@@ -27,18 +28,11 @@ export default function PatientView() {
           onChange={(e) => setDaySection(e.target.value)}
           className='bg-transparent outline-none'
         >
-          <option disabled={true} value='' className='text-gray-700'>
-            Select section of day
-          </option>
-          <option value='morning' className='text-black'>
-            Morning
-          </option>
-          <option value='afternoon' className='text-black'>
-            Afternoon
-          </option>
-          <option value='evening' className='text-black'>
-            Evening
-          </option>
+          {sectionsOfDay.map((section) => (
+            <option value={section.toLowerCase()} className='text-black'>
+              {section}
+            </option>
+          ))}
         </select>
       </div>
       <p className='text-center'>You can choose to get an appointment at:</p>

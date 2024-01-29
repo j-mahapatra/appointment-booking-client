@@ -7,6 +7,8 @@ export const days = [
   'Saturday',
 ];
 
+export const sectionsOfDay = ['Morning', 'Afternoon', 'Evening'];
+
 export const slots = [
   '05:30',
   '05:45',

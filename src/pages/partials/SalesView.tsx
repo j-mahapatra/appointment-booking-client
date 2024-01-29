@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
+import { days, sectionsOfDay } from '../../lib/constants';
 import SlotBook from '../../components/SlotBook';
 
 export default function SalesView() {
@@ -54,24 +55,11 @@ export default function SalesView() {
           <option disabled={true} value='' className='text-gray-700'>
             Select a day
           </option>
-          <option value='monday' className='text-black'>
-            Monday
-          </option>
-          <option value='tuesday' className='text-black'>
-            Tuesday
-          </option>
-          <option value='wednesday' className='text-black'>
-            Wednesday
-          </option>
-          <option value='thursday' className='text-black'>
-            Thursday
-          </option>
-          <option value='friday' className='text-black'>
-            Friday
-          </option>
-          <option value='saturday' className='text-black'>
-            Saturday
-          </option>
+          {days.map((day) => (
+            <option key={day} value={day.toLowerCase()} className='text-black'>
+              {day}
+            </option>
+          ))}
         </select>
       </div>
       <div className='flex justify-center space-x-2'>
@@ -82,18 +70,11 @@ export default function SalesView() {
           onChange={(e) => setDaySection(e.target.value)}
           className='bg-transparent outline-none'
         >
-          <option disabled={true} value='' className='text-gray-700'>
-            Select section of day
-          </option>
-          <option value='morning' className='text-black'>
-            Morning
-          </option>
-          <option value='afternoon' className='text-black'>
-            Afternoon
-          </option>
-          <option value='evening' className='text-black'>
-            Evening
-          </option>
+          {sectionsOfDay.map((section) => (
+            <option value={section.toLowerCase()} className='text-black'>
+              {section}
+            </option>
+          ))}
         </select>
       </div>
       <SlotBook
