@@ -14,6 +14,7 @@ export default function Header() {
       .post(`${import.meta.env.VITE_SERVER_URL}/api/user/logout`)
       .then(() => {
         toast.success('Logged out successfully');
+        sessionStorage.clear();
         setUser(undefined);
         navigate('/login');
       })

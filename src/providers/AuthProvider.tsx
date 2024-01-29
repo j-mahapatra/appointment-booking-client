@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 
 export const AuthContext = createContext<{
   user: UserType | undefined;
@@ -17,6 +17,20 @@ type UserType = {
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<UserType>();
+
+  useEffect(() => {
+    const userData = sessionStorage.getItem('user');
+
+    if (userData) {
+      setUser(JSON.parse(userData));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (user) {
+      sessionStorage.setItem('user', JSON.stringify(user));
+    }
+  }, [user]);
 
   return (
     <AuthContext.Provider value={{ user, setUser }}>
