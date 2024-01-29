@@ -1,9 +1,11 @@
 export default function SlotView({
   day,
   availableSlots,
+  sectionOfDay,
 }: {
   day: string;
   availableSlots: SlotType[] | undefined;
+  sectionOfDay: string;
 }) {
   const getUniqueSlots = (): SlotType[] => {
     const set = new Set<string>();
@@ -18,19 +20,34 @@ export default function SlotView({
     return uniqueSlots;
   };
 
+  const getDaySection = (slot: string): string => {
+    const hours = parseInt(slot.substring(0, 2));
+
+    if (hours < 12) {
+      return 'morning';
+    } else if (hours < 16) {
+      return 'afternoon';
+    } else {
+      return 'evening';
+    }
+  };
+
   return (
     <div className='flex flex-col items-center'>
       <p className='text-center mb-2 text-primary'>{day}</p>
       <div className='flex flex-wrap gap-x-2'>
         {getUniqueSlots()?.length ? (
-          getUniqueSlots()?.map((slot) => (
-            <p
-              key={slot._id}
-              className='border border-primary p-2 text-center my-2'
-            >
-              {slot.slot}
-            </p>
-          ))
+          getUniqueSlots()?.map(
+            (slot) =>
+              getDaySection(slot.slot) === sectionOfDay && (
+                <p
+                  key={slot._id}
+                  className='border border-primary p-2 text-center my-2'
+                >
+                  {slot.slot}
+                </p>
+              )
+          )
         ) : (
           <p>No time slots available</p>
         )}
