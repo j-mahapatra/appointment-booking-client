@@ -101,6 +101,9 @@ export default function SlotSelect({ day }: { day: string }) {
     if (selectedSlots.length === 0) {
       return toast.error('Please choose your time slots');
     }
+    if (!day) {
+      return toast.error('Please choose day for time slots');
+    }
     await axios
       .put(`${import.meta.env.VITE_SERVER_URL}/api/slots/create`, {
         slots: selectedSlots,
