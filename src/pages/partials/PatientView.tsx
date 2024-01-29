@@ -28,6 +28,9 @@ export default function PatientView() {
           onChange={(e) => setDaySection(e.target.value)}
           className='bg-transparent outline-none'
         >
+          <option disabled={true} value='' className='text-gray-700'>
+            Select section of day
+          </option>
           {sectionsOfDay.map((section) => (
             <option value={section.toLowerCase()} className='text-black'>
               {section}
