@@ -32,7 +32,11 @@ export default function PatientView() {
             Select section of day
           </option>
           {sectionsOfDay.map((section) => (
-            <option value={section.toLowerCase()} className='text-black'>
+            <option
+              key={section}
+              value={section.toLowerCase()}
+              className='text-black'
+            >
               {section}
             </option>
           ))}
