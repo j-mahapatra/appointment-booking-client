@@ -56,14 +56,14 @@ export default function SlotBook({
         {currentPhysio?.free_slots?.map(
           (slot: SlotType) =>
             slot.day === selectedDay &&
-            getDaySection(slot.slot) === sectionOfDay &&
-            !slot.isBooked && (
+            getDaySection(slot.slot) === sectionOfDay && (
               <button
                 key={slot._id}
                 onClick={() => bookTimeSlot(slot._id, slot.slot)}
-                disabled={bookedSlots?.includes(slot.slot)}
+                disabled={bookedSlots?.includes(slot.slot) || slot.isBooked}
                 className={`flex m-2 justify-center rounded-md border border-primary p-2 w-24 ${
-                  bookedSlots?.includes(slot.slot) && 'bg-gray-700'
+                  (bookedSlots?.includes(slot.slot) || slot.isBooked) &&
+                  'bg-gray-700'
                 }`}
               >
                 {slot.slot}
