@@ -31,7 +31,7 @@ export default function Header() {
       {user && (
         <button
           onClick={logout}
-          className='h-12 border border-primary p-2 mr-5 sm:mr-12 transition-all rounded-sm bg-transparent hover:bg-primary text-primary hover:text-secondary'
+          className='sm:absolute top-8 right-2 h-12 border border-primary p-2 mr-5 transition-all rounded-sm bg-transparent hover:bg-primary text-primary hover:text-secondary'
         >
           Logout
         </button>
