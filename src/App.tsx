@@ -12,7 +12,7 @@ axios.defaults.withCredentials = true;
 
 export default function App() {
   return (
-    <div className='bg-secondary h-screen'>
+    <div className='bg-secondary min-h-screen'>
       <BrowserRouter>
         <AuthProvider>
           <Header />
