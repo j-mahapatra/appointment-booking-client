@@ -29,7 +29,7 @@ export default function PatientView() {
           className='bg-transparent outline-none'
         >
           <option disabled={true} value='' className='text-gray-700'>
-            Select section of day
+            Select time of day
           </option>
           {sectionsOfDay.map((section) => (
             <option
@@ -42,19 +42,25 @@ export default function PatientView() {
           ))}
         </select>
       </div>
-      <p className='text-center'>You can choose to get an appointment at:</p>
-      <div className='flex w-full flex-col my-8 space-y-10'>
-        {days.map((day) => (
-          <SlotView
-            key={day}
-            day={day}
-            availableSlots={slots?.filter(
-              (slot) => slot.day === day.toLowerCase()
-            )}
-            sectionOfDay={daySection}
-          />
-        ))}
-      </div>
+      {daySection && (
+        <>
+          <p className='text-center'>
+            Doctors are available at the following time slots:
+          </p>
+          <div className='flex w-full flex-col my-8 space-y-10'>
+            {days.map((day) => (
+              <SlotView
+                key={day}
+                day={day}
+                availableSlots={slots?.filter(
+                  (slot) => slot.day === day.toLowerCase()
+                )}
+                sectionOfDay={daySection}
+              />
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 }
