@@ -5,6 +5,7 @@ type SlotType = {
   slot: string;
   day: string;
   isBooked: boolean;
+  remarks?: string;
 };
 
 type UserType = {
